@@ -15,11 +15,11 @@ Route::get('/', function () {
 Route::get('/taxpayers', [TaxpayerController::class, 'index'])->name('taxpayers');
 Route::post('/taxpayers', [TaxpayerController::class, 'store']);
 Route::get('/taxpayers/add', [TaxpayerController::class, 'create'])->name('add');
+Route::get('/taxpayers/edit/{taxpayer}', [TaxpayerController::class, 'edit'])->name('taxpayers.edit');
+Route::put('/taxpayers/update/{taxpayer}', [TaxpayerController::class, 'update'])->name('taxpayers.update');
 Route::delete('/taxpayers/{taxpayer}', [TaxpayerController::class, 'destroy'])->name('taxpayers.destroy');
-
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'store']);
-
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'store']);
 Route::post('/logout', [LogoutController::class, 'store'])->name('logout');

@@ -2,15 +2,15 @@
 
 @section('content')
 
-<div class="flex justify-center">
-
-   
+<div class="flex justify-center">  
     <div class="w-12/12 bg-white p-6 rounded-lg">
-        <div>
-            <a href="{{ route('add') }}" class="bg-blue-500 hover:bg-blue-700 text-white text-center py-2 px-4 rounded">
-                Add Tax Payer
-              </a>
-        </div><br><br>
+            <div class="w-12/12 bg-white p-6 rounded-lg">
+                <a href="{{ route('add') }}" class="bg-blue-500 hover:bg-blue-700 text-white text-center py-2 px-4 rounded">
+                    Add Tax Payer
+                </a>
+            </div>
+        <br><br><hr>
+
         @if($taxpayers->count())
            
                     <table class="table-auto shadow-lg bg-white border">
@@ -40,13 +40,24 @@
                             <td>{{ $taxpayer->physical_location }}</td>
                             <td>
                                
-                                <a href="#" class="text-green py-2 px-4">
+                                <a href="{{ route('taxpayers.edit', $taxpayer) }}" class="text-green-700 py-2 px-4">
                                     Edit
-                                  </a>
-                                <form action="{{ route('taxpayers.destroy',$taxpayer) }}" method="post" class="mr-1">
+                                </a>
+                                    |
+                                <a href="#" class="text-red-700">
+                                    <span onclick="event.preventDefault();
+                                           if(confirm('Do you really want to delete this Tax Payer?')){
+                                             document.getElementById('form-delete-{{$taxpayer->id}}')
+                                           .submit()
+                                           }">
+                                        Delete
+                                    </span>
+                                </a>
+
+                                <form style="display: none;" id="{{'form-delete-'.$taxpayer->id}}"
+                                    action="{{ route('taxpayers.destroy',$taxpayer) }}" method="post" class="mr-1">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="text-red-500"> Delete</button>
                                 </form>
                             
                             </td>
@@ -60,9 +71,11 @@
         {{ $taxpayers->links() }}
 
         @else
-
-        <p> {{ $taxpayer->user->name }} did not register any tax payer</p>
-
+        <div class="flex justify-center">
+            <div class="w-12/12 bg-white p-6 rounded-lg">
+                <p class="text-red-500"> You did not register any tax payer</p>
+            </div>
+        </div>
         @endif
     </div>
 </div>

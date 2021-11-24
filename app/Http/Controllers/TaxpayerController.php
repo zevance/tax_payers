@@ -45,7 +45,36 @@ class TaxpayerController extends Controller
 
         return back();
     }
+    public function edit(Taxpayer $taxpayer)
+    {
+        return view('taxpayers.edit', [
+            'taxpayer' => $taxpayer
+        ]);
+    }
+    public function update(Request $request, Taxpayer $taxpayer)
+    {
+        $this->validate($request, [
+            'tpin' => 'required',
+            'business_certificate_number' => 'required',
+            'trading_name' => 'required',
+            'mobile_number' => 'required',
+            'email' => 'required',
+            'business_registration_date' => 'required',
+            'physical_location' => 'required'
 
+        ]);
+        $taxpayer->update([
+            'tpin' => $request->tpin,
+            'business_certificate_number' => $request->business_certificate_number,
+            'trading_name' => $request->trading_name,
+            'mobile_number' => $request->mobile_number,
+            'email' => $request->email,
+            'business_registration_date' => $request->business_registration_date,
+            'physical_location' => $request->physical_location
+        ]);
+
+        return redirect(route('taxpayers'));
+    }
     public function destroy(Taxpayer $taxpayer)
     {
         $taxpayer->delete();
