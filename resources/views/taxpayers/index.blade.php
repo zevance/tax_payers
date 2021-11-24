@@ -15,15 +15,15 @@
            
                     <table class="table-auto shadow-lg bg-white border">
                         <thead>
-                        <tr>
-                            <th class="bg-blue-100 border text-left py-4">TPIN</th>
-                            <th class="bg-blue-100 border text-left py-4">BusinessCertificateNumber</th>
-                            <th class="bg-blue-100 border text-left py-4">TradingName</th>
-                            <th class="bg-blue-100 border text-left py-4">BusinessRegistration Date</th>
-                            <th class="bg-blue-100 border text-left py-4">MobileNumber</th>
-                            <th class="bg-blue-100 border text-left py-4">Email</th>
-                            <th class="bg-blue-100 border text-left py-4">PhysicalLocation</th>
-                            <th class="bg-blue-100 border text-left px4 py-4">Action</th>
+                        <tr class="bg-gray-100">
+                            <th class="border text-left py-4">TPIN</th>
+                            <th class="border text-left py-4">BusinessCertificateNumber</th>
+                            <th class="border text-left py-4">TradingName</th>
+                            <th class="border text-left py-4">BusinessRegistration Date</th>
+                            <th class="border text-left py-4">MobileNumber</th>
+                            <th class="border text-left py-4">Email</th>
+                            <th class="border text-left py-4">PhysicalLocation</th>
+                            <th class="border text-left px4 py-4">Action</th>
                         </tr>
                         </thead>
                     
@@ -31,14 +31,28 @@
                  @foreach($taxpayers as $taxpayer)
                     @if ($taxpayer->user_id == Auth::user()->id)
                         <tr>
-                            <td>{{ $taxpayer->tpin }}</td>
-                            <td>{{ $taxpayer->business_certificate_number }}</td>
-                            <td>{{ $taxpayer->trading_name }}</td>
-                            <td>{{ $taxpayer->business_registration_date }}</td>
-                            <td>{{ $taxpayer->mobile_number }}</td>
-                            <td>{{ $taxpayer->email }}</td>
-                            <td>{{ $taxpayer->physical_location }}</td>
-                            <td>
+                            <td class="border">
+                                {{ $taxpayer->tpin }}
+                            </td>
+                            <td class="border">
+                                {{ $taxpayer->business_certificate_number }}
+                            </td>
+                            <td class="border">
+                                {{ $taxpayer->trading_name }}
+                            </td>
+                            <td class="border">
+                                {{ $taxpayer->business_registration_date }}
+                            </td>
+                            <td class="border">
+                                {{ $taxpayer->mobile_number }}
+                            </td>
+                            <td class="border">
+                                {{ $taxpayer->email }}
+                            </td>
+                            <td class="border">
+                                {{ $taxpayer->physical_location }}
+                            </td>
+                            <td class="border">
                                
                                 <a href="{{ route('taxpayers.edit', $taxpayer) }}" class="text-green-700 py-2 px-4">
                                     Edit
