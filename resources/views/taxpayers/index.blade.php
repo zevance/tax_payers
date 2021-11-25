@@ -11,8 +11,7 @@
             </div>
         <br><br><hr>
 
-        @if($taxpayers->count())
-           
+                 @if($taxpayers->count())
                     <table class="table-auto shadow-lg bg-white border">
                         <thead>
                         <tr class="bg-gray-100">
@@ -29,7 +28,7 @@
                     
                         <tbody>
                  @foreach($taxpayers as $taxpayer)
-                    @if ($taxpayer->user_id == Auth::user()->id)
+                   @if ($taxpayer->user_id == Auth::user()->id) 
                         <tr>
                             <td class="border">
                                 {{ $taxpayer->tpin }}
@@ -77,7 +76,7 @@
                             </td>
                         </tr>
                         </tbody>
-                     @endif
+                      @endif
                     @endforeach
                     </table>
                   

@@ -43,7 +43,7 @@ class TaxpayerController extends Controller
             'physical_location' => $request->physical_location
         ]);
 
-        return back();
+        return redirect(route('taxpayers'));
     }
     public function edit(Taxpayer $taxpayer)
     {
