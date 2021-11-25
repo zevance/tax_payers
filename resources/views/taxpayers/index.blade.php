@@ -4,6 +4,9 @@
 
 <div class="flex justify-center">  
     <div class="w-12/12 bg-white p-6 rounded-lg">
+
+        <x-alert />
+        
             <div class="w-12/12 bg-white p-6 rounded-lg">
                 <a href="{{ route('add') }}" class="bg-blue-500 hover:bg-blue-700 text-white text-center py-2 px-4 rounded">
                     Add Tax Payer
