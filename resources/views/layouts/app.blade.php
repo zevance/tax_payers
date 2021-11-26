@@ -13,12 +13,15 @@
 <body class="bg-gray-200">
     <nav class="p-6 bg-white flex justify-between mb-6">
         <ul class="flex items-center">
-            <li>
+            @auth
+                 <li>
                 <a href="{{ route('dashboard') }}" class="p-3">Home</a>
             </li>
             <li>
                 <a href="{{ route('taxpayers') }}" class="p-3">Tax Payers</a>
             </li>
+            @endauth
+           
         </ul>
 
         <ul class="flex items-center">
